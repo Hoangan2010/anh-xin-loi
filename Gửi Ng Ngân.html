@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xin Lỗi Em Yêu</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            background-color: #ffebf0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            color: #ff4081;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px #ff80ab;
+        }
+
+        button {
+            font-size: 20px;
+            padding: 15px 30px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        #yesButton {
+            background-color: #ff80ab;
+            color: white;
+        }
+
+        #yesButton:hover {
+            background-color: #ff4081;
+            transform: scale(1.1);
+        }
+
+        #noButton {
+            position: absolute;
+            background-color: #ffffff;
+            color: #ff4081;
+            border: 2px solid #ff80ab;
+        }
+
+        #noButton:hover {
+            background-color: #ffebf0;
+            transform: scale(1.1);
+        }
+
+        .heart {
+            font-size: 50px;
+            color: #ff4081;
+            animation: heartbeat 1s infinite;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="initialContent">
+        <div class="heart">❤️</div>
+        <h1>Em yêu, anh xin lỗi! Tha lỗi cho anh nhé?</h1>
+        <button id="yesButton">Có</button>
+        <button id="noButton">Không</button>
+    </div>
+
+    <div id="thankYouMessage" class="hidden">
+        <div class="heart">❤️</div>
+        <h1>Oa yêu em, cảm ơn em đã tha lỗi cho anh!</h1>
+    </div>
+
+    <script>
+        const noButton = document.getElementById('noButton');
+        const yesButton = document.getElementById('yesButton');
+        const initialContent = document.getElementById('initialContent');
+        const thankYouMessage = document.getElementById('thankYouMessage');
+
+        noButton.addEventListener('mouseover', function() {
+            const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+            noButton.style.left = x + 'px';
+            noButton.style.top = y + 'px';
+        });
+
+        yesButton.onclick = function() {
+            initialContent.classList.add('hidden');
+            thankYouMessage.classList.remove('hidden');
+        };
+    </script>
+</body>
+</html>
